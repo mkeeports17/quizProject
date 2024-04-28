@@ -23,6 +23,7 @@ export default function App() {
     new Array(10).fill(null).map((v, id) => ({ id, name: "Swipe Me" }))
   );
   const [ currentRound, setCurrentRound] = useState(0);
+  const [ options, setOptions] = useState();
 
 
 
@@ -36,6 +37,7 @@ export default function App() {
       setAnswers(q.incorrect_answers.map(
         (v, i) => ({ id: i.toString(), text: v })));
     });
+    setOptions(quizData.questions[currentRound].options)
   }, []);
 
   function onSwipe(id) {
