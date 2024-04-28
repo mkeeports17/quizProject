@@ -5,39 +5,33 @@ import RenderHtml from "react-native-render-html";
 import { useWindowDimensions} from "react-native";
 import styles from "./styles";
 
-import quizData from "./quizData.json" 
-
-// https://opentdb.com/api_config.php
-async function fetchQuestion() {
-  const response = await(fetch(
-    "https://opentdb.com/api.php?amount=1&category=18&type=multiple"));
-  const json = await response.json();
-  return json.results[0];
-}
+import quizData from "./quizData.json"
 
 export default function App() {
   const [ question, setQuestion ] = useState("");
   const [ answers, setAnswers ] = useState([]);
   const [ correctId, setCorrectId ] = useState("");
-  const [items, setItems] = useState(
-    new Array(10).fill(null).map((v, id) => ({ id, name: "Swipe Me" }))
-  );
   const [ currentRound, setCurrentRound] = useState(0);
-  const [ options, setOptions] = useState();
+  const [ options, setOptions] = useState(0);
 
 
 
+
+  // useEffect(() => {
+  //   fetchQuestion().then(q => {
+  //     setQuestion(q.question);
+  //     const c = Math.floor(Math.random() * q.incorrect_answers.length + 1);
+  //     setCorrectId(c.toString());
+  //     q.incorrect_answers.splice(c, 0, q.correct_answer);
+  //     setAnswers(q.incorrect_answers.map(
+  //       (v, i) => ({ id: i.toString(), text: v })));
+  //   });
+  //   setOptions(quizData.questions[currentRound].options)
+  // }, []);
 
   useEffect(() => {
-    fetchQuestion().then(q => {
-      setQuestion(q.question);
-      const c = Math.floor(Math.random() * q.incorrect_answers.length + 1);
-      setCorrectId(c.toString());
-      q.incorrect_answers.splice(c, 0, q.correct_answer);
-      setAnswers(q.incorrect_answers.map(
-        (v, i) => ({ id: i.toString(), text: v })));
-    });
-    setOptions(quizData.questions[currentRound].options)
+    setQuestion(quizData.questions[currentRound].question);
+    setOptions(quizData.questions[currentRound].options);
   }, []);
 
   function onSwipe(id) {
@@ -52,23 +46,16 @@ export default function App() {
     <View style={ styles.container }>
       <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width }
         source={{ html: question }} />
-      
+      s
         <View>
           {
-              quizData.questions[currentRound].options.map((option) => {
-                  <QuestionBox questionText={option}></QuestionBox>
+              options.map((option) => {
+                  <Text>{option}</Text>
               })
+
           }
         </View>
-        {/* <View style={styles.container}>
-            {answers.map((v) => (
-              <Swipeable key={v.id} onSwipe={onSwipe(v.id)} name={v.text}>
-                <RenderHtml baseStyle={ baseStyle.answer } key={ v.id }
-                contentWidth={ width } source={{ html:
-                v.id === correctId ? `<strong>${ v.text }</strong>` : v.text }} />
-              </Swipeable>
-            ))}
-        </View> */}
+
       
     </View>
   );
@@ -76,7 +63,7 @@ export default function App() {
 
 
 function QuestionBox(questionText){
-  return <View>{questionText}</View>
+  return <View><Text>{questionText}</Text></View>
 }
 
 
