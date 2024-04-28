@@ -9,10 +9,10 @@ import quizData from "./quizData.json"
 
 export default function App() {
   const [ question, setQuestion ] = useState("");
-  const [ answers, setAnswers ] = useState([]);
   const [ correctId, setCorrectId ] = useState("");
   const [ currentRound, setCurrentRound] = useState(1);
   const [ options, setOptions] = useState(quizData.questions[currentRound].options);
+  const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
   const [ lives, setLives ] = useState(3);
 
 
@@ -48,7 +48,14 @@ export default function App() {
         options.map(( option, id)=>(
           // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
           <Button key={id} style={styles.options} title={option}
-          onPress={() => Alert.alert('Simple Button pressed')}></Button>
+          onPress={(val) => {
+            //if id matches the current answer, then print correct, else print false
+            if (id == answer){
+              console.log("correct")
+            } else{
+              console.log("false")
+            }
+          }}></Button>
         ))
       }
 
