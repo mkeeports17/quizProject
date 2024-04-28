@@ -10,7 +10,7 @@ import quizData from "./quizData.json"
 export default function App() {
   const [ question, setQuestion ] = useState("");
   const [ correctId, setCorrectId ] = useState("");
-  const [ currentRound, setCurrentRound] = useState(1);
+  const [ currentRound, setCurrentRound] = useState(2);
   const [ options, setOptions] = useState(quizData.questions[currentRound].options);
   const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
   const [ lives, setLives ] = useState(3);
@@ -43,7 +43,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <RenderHtml contentWidth={ width } source={{ html: question }} />
+      <Text contentWidth={width} style={styles.question}>{currentRound + ". " + question}</Text>
       {
         options.map(( option, id)=>(
           // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
