@@ -13,7 +13,7 @@ export default function App() {
   const [ correctId, setCorrectId ] = useState("");
   const [ currentRound, setCurrentRound] = useState(1);
   const [ options, setOptions] = useState(quizData.questions[currentRound].options);
-
+  const [ lives, setLives ] = useState(3);
 
 
 
@@ -45,9 +45,9 @@ export default function App() {
     <View style={styles.container}>
       <RenderHtml contentWidth={ width } source={{ html: question }} />
       {
-        options.map((option)=>(
+        options.map(( option, id)=>(
           // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
-          <Button style={styles.options} title={option}
+          <Button key={id} style={styles.options} title={option}
           onPress={() => Alert.alert('Simple Button pressed')}></Button>
         ))
       }
