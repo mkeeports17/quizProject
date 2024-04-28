@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text} from "react-native";
 import Swipeable from "./Swipeable";  
 import RenderHtml from "react-native-render-html";
 import { useWindowDimensions} from "react-native";
@@ -11,8 +11,8 @@ export default function App() {
   const [ question, setQuestion ] = useState("");
   const [ answers, setAnswers ] = useState([]);
   const [ correctId, setCorrectId ] = useState("");
-  const [ currentRound, setCurrentRound] = useState(0);
-  const [ options, setOptions] = useState(0);
+  const [ currentRound, setCurrentRound] = useState(1);
+  const [ options, setOptions] = useState(quizData.questions[currentRound].options);
 
 
 
@@ -34,29 +34,23 @@ export default function App() {
     setOptions(quizData.questions[currentRound].options);
   }, []);
 
-  function onSwipe(id) {
-    return () => {
-      setItems(items.filter((item) => item.id !== id));
-    };
-  }
-
+  // function onSwipe(id) {
+  //   return () => {
+  //     setItems(items.filter((item) => item.id !== id));
+  //   };
+  // }
   const { width } = useWindowDimensions();
 
   return (
-    <View style={ styles.container }>
-      <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width }
-        source={{ html: question }} />
-      s
-        <View>
-          {
-              options.map((option) => {
-                  <Text>{option}</Text>
-              })
+    <View style={styles.container}>
+      <RenderHtml contentWidth={ width } source={{ html: question }} />
+      {
+        options.map((option)=>(
+          // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
+          <Text style={styles.options}>{option}</Text>
+        ))
+      }
 
-          }
-        </View>
-
-      
     </View>
   );
 }
