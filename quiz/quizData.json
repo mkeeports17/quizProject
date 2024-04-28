@@ -1,0 +1,37 @@
+{
+    "questions":[
+        {
+            "question":"What is the best intramural sport?",
+            "options":["Flag Football","Flag Football","Flag Football","Flag Football"],
+            "answer": 0
+        },
+        {
+            "question":"Would you marry kim phipps?",
+            "options":["Yes!","No","I'd take her to the spring fling","I'm her husband"],
+            "answer": 3
+        },
+        {
+            "question":"<when does lottie close>?",
+            "options":["Way too early","</ when does lottie close>","2:30pm","7px"],
+            "answer": 1
+        },        
+        {
+            "question":"arrayVal = [“Baby”,”World”, “2 ”, “Peace”, “I I”];\nprint( arrayVal[2] + arrayVal[4] );",
+            "options":["Not this one","World Peace","Twin Towers","Staged?"],
+            "answer": 2
+        },        
+        {
+            "question":"Would you marry kim phipps?",
+            "options":["Yes!","No","I'd take her to the spring fling","I'm her husband"],
+            "answer": 3
+        },        
+        {
+            "question":"Would you marry kim phipps?",
+            "options":["Yes!","No","I'd take her to the spring fling","I'm her husband"],
+            "answer": 3
+        }
+
+
+
+    ]
+}
