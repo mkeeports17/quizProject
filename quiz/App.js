@@ -10,7 +10,7 @@ import quizData from "./quizData.json"
 export default function App() {
   const [ question, setQuestion ] = useState("");
   const [ correctId, setCorrectId ] = useState("");
-  const [ currentRound, setCurrentRound] = useState(2);
+  const [ currentRound, setCurrentRound] = useState(0);
   const [ options, setOptions] = useState(quizData.questions[currentRound].options);
   const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
   const [ lives, setLives ] = useState(3);
@@ -18,7 +18,8 @@ export default function App() {
   useEffect(() => {
     setQuestion(quizData.questions[currentRound].question);
     setOptions(quizData.questions[currentRound].options);
-  }, []);
+    setAnswer(quizData.questions[currentRound].answer)
+  }, [currentRound]);
 
   const { width } = useWindowDimensions();
 
@@ -30,12 +31,16 @@ export default function App() {
           // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
           <Button key={id} style={styles.options} title={option}
           onPress={(val) => {
-            //if id matches the current answer, then print correct, else print false
             if (id == answer){
-              console.log("correct")
-            } else{
-              console.log("false")
+              setCurrentRound(currentRound+1)
+            } else if (lives > 0){
+              setLives(lives-1)
+            } else {
+              setCurrentRound(0)
+              setLives(3)
             }
+            console.log(lives,currentRound,id,answer)
+
           }}></Button>
         ))
       }</View>
