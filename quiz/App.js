@@ -43,10 +43,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <RenderHtml contentWidth={ width } source={{ html: question }} />
+      <RenderHtml baseStyle={styles.question} contentWidth={ width } source={{ html: question }} />
       {
         options.map((option)=>(
-          // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
           <Text style={styles.options}>{option}</Text>
         ))
       }
@@ -59,14 +58,3 @@ export default function App() {
 function QuestionBox(questionText){
   return <View><Text>{questionText}</Text></View>
 }
-
-
-// for RenderHtml components
-const baseStyle = {
-  question: {
-    fontWeight: "bold"
-  },
-  answer: {
-    textAlign: "center" 
-  }
-};

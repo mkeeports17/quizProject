@@ -1,13 +1,20 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+
   container: {
     marginTop:50,
+    textAlign:"center",
     alignItems: "center",
     backgroundColor: "ghostwhite",
   },
 
+  question: {
+    fontWeight: "bold"
+  },
+
   options: {
+
     margin:"auto",
     width:200,
     alignItems: "center",
