@@ -5,6 +5,8 @@ import RenderHtml from "react-native-render-html";
 import { useWindowDimensions} from "react-native";
 import styles from "./styles";
 
+import quizData from "./quizData.json" 
+
 // https://opentdb.com/api_config.php
 async function fetchQuestion() {
   const response = await(fetch(
@@ -20,6 +22,10 @@ export default function App() {
   const [items, setItems] = useState(
     new Array(10).fill(null).map((v, id) => ({ id, name: "Swipe Me" }))
   );
+  const [ currentRound, setCurrentRound] = useState(0);
+
+
+
 
   useEffect(() => {
     fetchQuestion().then(q => {
@@ -45,8 +51,14 @@ export default function App() {
       <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width }
         source={{ html: question }} />
       
-        
-        <View style={styles.container}>
+        <View>
+          {
+              quizData.questions[currentRound].options.map((option) => {
+                  <QuestionBox questionText={option}></QuestionBox>
+              })
+          }
+        </View>
+        {/* <View style={styles.container}>
             {answers.map((v) => (
               <Swipeable key={v.id} onSwipe={onSwipe(v.id)} name={v.text}>
                 <RenderHtml baseStyle={ baseStyle.answer } key={ v.id }
@@ -54,10 +66,15 @@ export default function App() {
                 v.id === correctId ? `<strong>${ v.text }</strong>` : v.text }} />
               </Swipeable>
             ))}
-        </View>
+        </View> */}
       
     </View>
   );
+}
+
+
+function QuestionBox(questionText){
+  return <View>{questionText}</View>
 }
 
 
