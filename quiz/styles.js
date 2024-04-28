@@ -9,8 +9,14 @@ export default StyleSheet.create({
     backgroundColor: "ghostwhite",
   },
 
+  optionsContainer: {
+    backgroundColor: "lightblue",
+  },
+
   question: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize:25,
+    padding:10,
   },
 
   options: {

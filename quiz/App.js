@@ -15,37 +15,18 @@ export default function App() {
   const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
   const [ lives, setLives ] = useState(3);
 
-
-
-  // useEffect(() => {
-  //   fetchQuestion().then(q => {
-  //     setQuestion(q.question);
-  //     const c = Math.floor(Math.random() * q.incorrect_answers.length + 1);
-  //     setCorrectId(c.toString());
-  //     q.incorrect_answers.splice(c, 0, q.correct_answer);
-  //     setAnswers(q.incorrect_answers.map(
-  //       (v, i) => ({ id: i.toString(), text: v })));
-  //   });
-  //   setOptions(quizData.questions[currentRound].options)
-  // }, []);
-
   useEffect(() => {
     setQuestion(quizData.questions[currentRound].question);
     setOptions(quizData.questions[currentRound].options);
   }, []);
 
-  // function onSwipe(id) {
-  //   return () => {
-  //     setItems(items.filter((item) => item.id !== id));
-  //   };
-  // }
   const { width } = useWindowDimensions();
 
   return (
     <View style={styles.container}>
       <Text contentWidth={width} style={styles.question}>{currentRound + ". " + question}</Text>
-      {
-        options.map(( option, id)=>(
+      <View style={styles.optionsContainer}>
+      {options.map(( option, id)=>(
           // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
           <Button key={id} style={styles.options} title={option}
           onPress={(val) => {
@@ -57,7 +38,7 @@ export default function App() {
             }
           }}></Button>
         ))
-      }
+      }</View>
 
     </View>
   );
