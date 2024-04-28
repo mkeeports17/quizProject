@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text} from "react-native";
+import { View, StyleSheet, Text, Button} from "react-native";
 import Swipeable from "./Swipeable";  
 import RenderHtml from "react-native-render-html";
 import { useWindowDimensions} from "react-native";
@@ -43,10 +43,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <RenderHtml baseStyle={styles.question} contentWidth={ width } source={{ html: question }} />
+      <RenderHtml contentWidth={ width } source={{ html: question }} />
       {
         options.map((option)=>(
-          <Text style={styles.options}>{option}</Text>
+          // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
+          <Button style={styles.options} title={option}
+          onPress={() => Alert.alert('Simple Button pressed')}></Button>
         ))
       }
 
@@ -55,6 +57,14 @@ export default function App() {
 }
 
 
-function QuestionBox(questionText){
-  return <View><Text>{questionText}</Text></View>
-}
+
+
+// for RenderHtml components
+const baseStyle = {
+  question: {
+    fontWeight: "bold"
+  },
+  answer: {
+    textAlign: "center" 
+  }
+};
