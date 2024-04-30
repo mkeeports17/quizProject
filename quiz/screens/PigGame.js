@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Button, Pressable} from "react-native";
+import { useParams } from '@react-navigation/native';
 
 import { useWindowDimensions} from "react-native";
 import styles from "../styles";
@@ -13,7 +14,10 @@ function randomNum(){
 }
 
 
-export default function PigGame(){
+export default function PigGame({navigation}){
+    
+
+
     [ currentRoll, setCurrentRoll ] = useState(0);
     [ roundScore, setRoundScore ] = useState(0);
     [ totalScore, setTotalScore ] = useState(0);
@@ -62,7 +66,10 @@ export default function PigGame(){
             </View>
             <View >
                 <Text>Continue</Text>
-                <Pressable><Text>Next Question</Text></Pressable>
+                <Pressable onPress={() => {
+                    navigation.navigate('Trivia',{passedRound:5});
+
+                }}><Text>Next Question</Text></Pressable>
             </View>
         </View>
     );

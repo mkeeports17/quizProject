@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Button, Pressable} from "react-native";
 
+
 import { useWindowDimensions} from "react-native";
 import styles from "../styles";
 
 import quizData from "../quizData.json"
 
+import { useRoute } from '@react-navigation/native'; 
 
 
 
 export default function TriviaGame({navigation}){
+    //const {Param }= navigation.getParams('passedRound');
+    const route = useRoute(); 
     const [ question, setQuestion ] = useState("");
     const [ correctId, setCorrectId ] = useState("");
-    const [ currentRound, setCurrentRound] = useState(0);
+    const [ currentRound, setCurrentRound] = useState(route.params.passedRound);
+
     const [ options, setOptions] = useState(quizData.questions[currentRound].options);
     const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
     const [ lives, setLives ] = useState(3);
-  
     useEffect(() => {
       setQuestion(quizData.questions[currentRound].question);
       setOptions(quizData.questions[currentRound].options);
       setAnswer(quizData.questions[currentRound].answer)
+      
     }, [currentRound]);
+
+    if((route.params.passedRound != currentRound) && route.params.passedRound == 5){
+      setCurrentRound(5);
+    }
   
     const { width } = useWindowDimensions();
   
