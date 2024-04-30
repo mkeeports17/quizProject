@@ -43,8 +43,8 @@ export default function TriviaGame({navigation}){
         </View>
         <Text contentWidth={width} style={styles.question}>{question}</Text>
         
-        <View style={currentRound===6 ? styles.optionsContainerAlt : styles.optionsContainer}>
-        <ScrollView style={currentRound===6 ? styles.scroll : styles.noscroll}>
+        <View style={currentRound===7 ? styles.optionsContainerAlt : styles.optionsContainer}>
+        <ScrollView style={currentRound===7 ? styles.scroll : styles.noscroll}>
         {options.map(( option, id)=>(
           <Pressable key={id} onPress={(val) => {
             if (id == answer){
@@ -53,7 +53,7 @@ export default function TriviaGame({navigation}){
                 //navigation.navigate('PigGame',{lives:lives});
                 setCurrentRound(currentRound+2)
               }else if(currentRound==7){
-                //navigation.navigate('Close',{lives:lives});
+                navigation.navigate('Close');
               }else{
                 setCurrentRound(currentRound+1)
               }
