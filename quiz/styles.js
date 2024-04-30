@@ -13,10 +13,41 @@ export default StyleSheet.create({
 
   tabs: {
     flexDirection:"row",
-    backgroundColor:"white",
+    //backgroundColor:"white",
     height:70,
   },
 
+  heading: {
+    marginTop:90,
+    marginBottom:30,
+    textAlign:"center",
+    backgroundColor:"#90F3FF",
+    fontSize:45,
+    margin:20,
+    padding:15,
+  },
+  credits:{
+    textAlign:"center",
+    fontSize:20,
+    marginBottom:15,
+  },
+  begin: {
+    margin:20,
+    marginTop:50,
+    backgroundColor: "#68EDC6",
+    width:"auto",
+    height:"auto",
+    textAlign:"center",
+    fontSize:35,
+    padding:15,
+  },
+
+  desc: {
+    textAlign:"center",
+    margin:25,
+    fontSize:18,
+
+  },
 
   optionsContainer: {
     backgroundColor: "#68EDC6",
