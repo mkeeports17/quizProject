@@ -95,6 +95,9 @@ export default StyleSheet.create({
     fontSize:25,
   },
   close: {
+    textAlign:"center",
+    fontSize:50,
+    margin:50,
     
   }
 
