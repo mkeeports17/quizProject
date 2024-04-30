@@ -48,12 +48,11 @@ export default function TriviaGame({navigation}){
         {options.map(( option, id)=>(
           <Pressable key={id} onPress={(val) => {
             if (id == answer){
-
               //any customizable pages will go here
               if(currentRound == 3){
                 //navigation.navigate('PigGame',{lives:lives});
                 setCurrentRound(currentRound+2)
-              }else if(currentRound==6){
+              }else if(currentRound==7){
                 //navigation.navigate('Close',{lives:lives});
               }else{
                 setCurrentRound(currentRound+1)
