@@ -42,7 +42,7 @@ export default function PigGame({navigation}){
         if (livesAmount == 0){
             navigation.dispatch(
                 StackActions.replace('Trivia', {
-                    passedRound:0,
+                    passedRound:0,lives:3
                 })
               );
         }
@@ -80,13 +80,14 @@ export default function PigGame({navigation}){
             <View >
                 <Text style={pigStyles.items1}>Continue</Text>
                 <Pressable onPress={() => {
-                    navigation.dispatch(
-                        StackActions.replace('Trivia', {
-                            passedRound:5, lives:livesAmount
-                        })
-                      );
-
-                }}><Text style={pigStyles.next}>Next Question</Text></Pressable>
+                    if((totalScore > 5)&& totalHolds > 3){
+                        navigation.dispatch(
+                            StackActions.replace('Trivia', {
+                                passedRound:5, lives:livesAmount
+                            })
+                        );
+                    }
+                }}><Text style={((totalScore > 5) && totalHolds > 3)?pigStyles.afternext:pigStyles.next}>Next Question</Text></Pressable>
             </View>
         </View>
     );

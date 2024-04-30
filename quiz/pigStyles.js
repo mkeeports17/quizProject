@@ -29,6 +29,13 @@ export default StyleSheet.create({
     },
     next:{
         textAlign:"center",
+        backgroundColor: "#red",
+        fontSize:45,
+        padding:10,
+        marginTop:20,
+    },
+    afternext:{
+        textAlign:"center",
         backgroundColor: "#68EDC6",
         fontSize:45,
         padding:10,
