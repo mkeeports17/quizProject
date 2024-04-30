@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Button, Pressable, useWindowDimensions} from "react-native";
-import { StackActions } from '@react-navigation/native';
+import { StackActions, useRoute } from '@react-navigation/native';
 
 import pigStyles from "../pigStyles";
 
@@ -16,7 +16,8 @@ function randomNum(){
 
 export default function PigGame({navigation}){
     
-
+    const route = useRoute(); 
+    [ livesAmount, setLivesAmount ] = useState(route.params.lives);
 
     [ currentRoll, setCurrentRoll ] = useState(0);
     [ roundScore, setRoundScore ] = useState(0);
@@ -24,41 +25,47 @@ export default function PigGame({navigation}){
 
     [ totalHolds, setTotalHolds ] = useState(0);
     [ isStyled, setIsStyled ] = useState(true);
+
+
+    function onRoll(){
+        let ranInt = randomNum()
+        setTotalHolds(0)
+
+        setCurrentRoll(ranInt);
+        if(ranInt > 1){
+            setRoundScore(roundScore + ranInt)
+        }else{
+            setRoundScore(0)
+        }
+
+    }
+    function onHold(){
+        setTotalScore(roundScore+totalScore)
+        setRoundScore(0)
+        setCurrentRoll(0)
+
+        setTotalHolds(totalHolds+1)
+        if((totalHolds>3) && totalScore>20){
+            setIsStyled(false)
+            console.log("Win Game!")
+            //eventually I want it to set the style of the
+            //next button to true.
+        }
+    }
+
+
+
+
     return(
         <View style={pigStyles.container}>
-            <View><Text>Lives:</Text></View>
+            <View><Text>Lives:{livesAmount}</Text></View>
             <View><Text style={pigStyles.heading}>WELCOME TO Hold 'em PIG GAME</Text></View>
             <View><Text style={pigStyles.items1}>Current Dice Roll:{ currentRoll }</Text></View>
             <View><Text style={pigStyles.items1}>RoundScore: { roundScore }</Text></View>
             <View>
-                <Pressable onPress={()=>{
-                    let ranInt = randomNum()
-                    setTotalHolds(0)
+                <Pressable onPress={()=>onRoll()}><Text style={pigStyles.items1}>Roll</Text></Pressable>
 
-                    setCurrentRoll(ranInt);
-                    if(ranInt > 1){
-                        setRoundScore(roundScore + ranInt)
-                    }else{
-                        setRoundScore(0)
-                    }
-
-                }}><Text style={pigStyles.items1}>Roll</Text>
-                </Pressable>
-
-                <Pressable onPress={()=>{
-                    setTotalScore(roundScore+totalScore)
-                    setRoundScore(0)
-                    setCurrentRoll(0)
-
-                    setTotalHolds(totalHolds+1)
-                    if((totalHolds>3) && totalScore>20){
-                        setIsStyled(false)
-                        console.log("Win Game!")
-                        //eventually I want it to set the style of the
-                        //next button to true.
-                    }
-                }}><Text style={pigStyles.items1}>Hold</Text>
-                </Pressable>
+                <Pressable onPress={()=>onHold()}><Text style={pigStyles.items1}>Hold</Text></Pressable>
             </View>
 
             <View>
@@ -72,9 +79,8 @@ export default function PigGame({navigation}){
                             passedRound:5,
                         })
                       );
-                      //navigate('Trivia',{passedRound:5});
 
-                }}><Text style={pigStyles.next} >Next Question</Text></Pressable>
+                }}><Text style={pigStyles.next}>Next Question</Text></Pressable>
             </View>
         </View>
     );
