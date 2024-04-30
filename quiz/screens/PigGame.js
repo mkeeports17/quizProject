@@ -19,6 +19,7 @@ export default function PigGame(){
     [ totalScore, setTotalScore ] = useState(0);
 
     [ totalHolds, setTotalHolds ] = useState(0);
+    [ isStyled, setIsStyled ] = useState(true);
     return(
         <View>
             <View><Text>Lives:</Text></View>
@@ -47,6 +48,7 @@ export default function PigGame(){
 
                     setTotalHolds(totalHolds+1)
                     if((totalHolds>3) && totalScore>20){
+                        setIsStyled(false)
                         console.log("Win Game!")
                         //eventually I want it to set the style of the
                         //next button to true.
@@ -58,7 +60,7 @@ export default function PigGame(){
             <View>
                 <Text>Current Score {totalScore}</Text>
             </View>
-            <View>
+            <View >
                 <Text>Continue</Text>
                 <Pressable><Text>Next Question</Text></Pressable>
             </View>
@@ -67,17 +69,3 @@ export default function PigGame(){
 
     
 }
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    text: {
-      fontSize: 20,
-    },
-    styledText: {
-      fontWeight: 'bold',
-      color: 'blue',
-    },
-  });
