@@ -5,6 +5,11 @@ import { useParams } from '@react-navigation/native';
 import { useWindowDimensions} from "react-native";
 import styles from "../styles";
 
+import { StackActions } from '@react-navigation/native';
+
+
+
+
 //every time they lose the game they lose a life.
 
 //I need to pass in the parameters of current amount of lives, also if the player is to die at this stage
@@ -67,7 +72,12 @@ export default function PigGame({navigation}){
             <View >
                 <Text>Continue</Text>
                 <Pressable onPress={() => {
-                    navigation.navigate('Trivia',{passedRound:5});
+                    navigation.dispatch(
+                        StackActions.replace('Trivia', {
+                            passedRound:5,
+                        })
+                      );
+                      //navigate('Trivia',{passedRound:5});
 
                 }}><Text>Next Question</Text></Pressable>
             </View>

@@ -13,15 +13,17 @@ import { useRoute } from '@react-navigation/native';
 
 
 export default function TriviaGame({navigation}){
-    //const {Param }= navigation.getParams('passedRound');
     const route = useRoute(); 
     const [ question, setQuestion ] = useState("");
     const [ correctId, setCorrectId ] = useState("");
     const [ currentRound, setCurrentRound] = useState(route.params.passedRound);
 
+
     const [ options, setOptions] = useState(quizData.questions[currentRound].options);
     const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
     const [ lives, setLives ] = useState(3);
+
+
     useEffect(() => {
       setQuestion(quizData.questions[currentRound].question);
       setOptions(quizData.questions[currentRound].options);
@@ -29,9 +31,8 @@ export default function TriviaGame({navigation}){
       
     }, [currentRound]);
 
-    if((route.params.passedRound != currentRound) && route.params.passedRound == 5){
-      setCurrentRound(5);
-    }
+    
+ 
   
     const { width } = useWindowDimensions();
   
@@ -47,10 +48,13 @@ export default function TriviaGame({navigation}){
         <ScrollView style={currentRound===6 ? styles.scroll : styles.noscroll}>
         {options.map(( option, id)=>(
           <Pressable key={id} onPress={(val) => {
+            console.log("option: "+option +", Id:"+id +"answer"+answer + "currentRound"+ currentRound)
+
             if (id == answer){
+              console.log("correct")
               //any customizable pages will go here
               if(currentRound == 3){
-                //navigation.navigate('PigGame',{lives:lives});
+                navigation.navigate('PigGame',{lives:lives});
                 setCurrentRound(currentRound+2)
               }else if(currentRound==7){
                 //navigation.navigate('Close',{lives:lives});
