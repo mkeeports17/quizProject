@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Button} from "react-native";
+import { View, StyleSheet, Text, Button, useWindowDimensions} from "react-native";
 import Swipeable from "./Swipeable";  
 import RenderHtml from "react-native-render-html";
-import { useWindowDimensions} from "react-native";
 import styles from "./styles";
 
 import { NavigationContainer } from "@react-navigation/native";
