@@ -27,7 +27,7 @@ export default function PigGame(){
                 <Pressable onPress={()=>{
                     let ranInt = randomNum()
                     setCurrentRoll(ranInt);
-                    if(currentRoll > 1){
+                    if(ranInt > 1){
                         setRoundScore(roundScore + ranInt)
                     }else{
                         setRoundScore(0)
@@ -38,6 +38,7 @@ export default function PigGame(){
 
                 <Pressable onPress={()=>{
                     setTotalScore(roundScore+totalScore)
+                    setRoundScore(0)
                     setCurrentRoll(0)
                 }}><Text>Hold</Text>
                 </Pressable>
