@@ -7,9 +7,18 @@ import styles from "../styles";
 import quizData from "../quizData.json"
 
 
+function PigGameButton({navigation}){
 
 
-export default function TriviaGame(){
+  return(
+    <Pressable onPress={
+      () => {
+        navigation.navigate('PigGame');
+    }}><Text>PressMe</Text></Pressable>
+  )
+}
+
+export default function TriviaGame({navigation}){
     const [ question, setQuestion ] = useState("");
     const [ correctId, setCorrectId ] = useState("");
     const [ currentRound, setCurrentRound] = useState(0);
@@ -50,8 +59,10 @@ export default function TriviaGame(){
 
           </Pressable>
           ))
-        }</View>
-  
+        }
+        </View>
+        <PigGameButton navigation={navigation}></PigGameButton>
+
       </View>
     );
 
