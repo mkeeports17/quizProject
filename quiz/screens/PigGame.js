@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Button, Pressable, useWindowDimensions} from "react-native";
-import { useParams,StackActions } from '@react-navigation/native';
+import { StackActions } from '@react-navigation/native';
 
 import pigStyles from "../pigStyles";
 

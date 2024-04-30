@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Button, useWindowDimensions} from "react-native";
-import Swipeable from "./Swipeable";  
-import RenderHtml from "react-native-render-html";
-import styles from "./styles";
+
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -13,7 +10,6 @@ import TriviaGame from "./screens/triviaGame";
 import PigGame from "./screens/PigGame";
 import Close from "./screens/Close"
 
-import quizData from "./quizData.json"
 
 const Stack = createNativeStackNavigator();
 
