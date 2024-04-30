@@ -5,6 +5,10 @@ import RenderHtml from "react-native-render-html";
 import { useWindowDimensions} from "react-native";
 import styles from "./styles";
 
+//import { NavigationContainer } from "@react-navigation/native";
+//import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+
 import quizData from "./quizData.json"
 
 export default function App() {
