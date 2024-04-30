@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Button, Pressable} from "react-native";
+import { View, Text, Button, Pressable} from "react-native";
 
 import { useWindowDimensions} from "react-native";
 import styles from "../styles";
@@ -43,8 +43,6 @@ export default function TriviaGame({navigation}){
         <Text contentWidth={width} style={styles.question}>{question}</Text>
         <View style={styles.optionsContainer}>
         {options.map(( option, id)=>(
-
-
           <Pressable key={id} onPress={(val) => {
             if (id == answer){
               setCurrentRound(currentRound+1)
@@ -53,10 +51,8 @@ export default function TriviaGame({navigation}){
             } else {
               setCurrentRound(0)
               setLives(3)
-            }
-            console.log(lives,currentRound,id,answer) }}>
+            } }}>
             <Text key={id} style={styles.options}>{option}</Text>
-
           </Pressable>
           ))
         }

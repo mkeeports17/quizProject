@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Pressable} from "react-native";
+import { View, Text, Pressable} from "react-native";
 
 import { useWindowDimensions} from "react-native";
 import styles from "../styles";
@@ -13,11 +13,19 @@ export default function Home({navigation}){
 
     return(
 
-        <View>
-            <Text>This is the Home page</Text>
+        <View style={styles.container}>
+            <Text style={styles.heading}>Impossible Quiz</Text>
+            <Text style={styles.credits}>by: Ezra Miller and Michael Keeports</Text>
+            <Text style={styles.desc}>"The Impossible Quiz: Mobile Edition" brings the classic 
+                brain-teasing experience from Coolmath to your fingertips. Prepare to embark on an 
+                adventure filled with mind-bending questions, absurd challenges, and plenty of surprises. 
+                With its quirky humor and deviously tricky questions, this game will test your wits like 
+                never before. Can you beat "The Impossible Quiz"?</Text>
             <Pressable onPress={() => {
                 navigation.navigate('Trivia');
-            }}><Text>Im Pressable</Text></Pressable>
+                }}>
+                <Text style={styles.begin}>Begin Quiz</Text>
+            </Pressable>
         </View>
     )
 
