@@ -35,7 +35,16 @@ export default function PigGame({navigation}){
         if(ranInt > 1){
             setRoundScore(roundScore + ranInt)
         }else{
+            setLivesAmount(livesAmount-1)
             setRoundScore(0)
+        }
+
+        if (livesAmount == 0){
+            navigation.dispatch(
+                StackActions.replace('Trivia', {
+                    passedRound:0,
+                })
+              );
         }
 
     }
@@ -52,9 +61,6 @@ export default function PigGame({navigation}){
             //next button to true.
         }
     }
-
-
-
 
     return(
         <View style={pigStyles.container}>
@@ -76,7 +82,7 @@ export default function PigGame({navigation}){
                 <Pressable onPress={() => {
                     navigation.dispatch(
                         StackActions.replace('Trivia', {
-                            passedRound:5,
+                            passedRound:5, lives:livesAmount
                         })
                       );
 

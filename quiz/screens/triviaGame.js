@@ -17,7 +17,7 @@ export default function TriviaGame({navigation}){
 
     const [ options, setOptions] = useState(quizData.questions[currentRound].options);
     const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
-    const [ lives, setLives ] = useState(3);
+    const [ lives, setLives ] = useState(route.params.lives);
 
 
     useEffect(() => {

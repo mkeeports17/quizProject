@@ -22,7 +22,7 @@ export default function Home({navigation}){
                 With its quirky humor and deviously tricky questions, this game will test your wits like 
                 never before. Can you beat "The Impossible Quiz"?</Text>
             <Pressable onPress={() => {
-                navigation.navigate('Trivia', {passedRound: 0});
+                navigation.navigate('Trivia', {passedRound: 0, lives: 3});
                 }}>
                 <Text style={styles.begin}>Begin Quiz</Text>
             </Pressable>
