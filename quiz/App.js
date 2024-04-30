@@ -12,6 +12,7 @@ import HomeScreen from "./screens/Home";
 import Dead from "./screens/Dead";
 import TriviaGame from "./screens/triviaGame";
 import PigGame from "./screens/PigGame";
+import Close from "./screens/Close"
 
 import quizData from "./quizData.json"
 
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Screen name = "Home" component ={HomeScreen} />
         <Stack.Screen name = "Trivia" component ={TriviaGame} />
         <Stack.Screen name = "PigGame" component ={PigGame}/>
+        <Stack.Screen name = "Close" component ={Close}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
