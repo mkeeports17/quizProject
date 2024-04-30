@@ -3,12 +3,9 @@ import { View, StyleSheet, Text, Button, Pressable} from "react-native";
 import { useParams } from '@react-navigation/native';
 
 import { useWindowDimensions} from "react-native";
-import styles from "../styles";
+import pigStyles from "../pigStyles";
 
 import { StackActions } from '@react-navigation/native';
-
-
-
 
 //every time they lose the game they lose a life.
 
@@ -30,11 +27,11 @@ export default function PigGame({navigation}){
     [ totalHolds, setTotalHolds ] = useState(0);
     [ isStyled, setIsStyled ] = useState(true);
     return(
-        <View>
+        <View style={pigStyles.container}>
             <View><Text>Lives:</Text></View>
-            <View><Text>WELCOME TO Hold 'em PIG GAME</Text></View>
-            <View><Text>Current Dice Roll:{ currentRoll }</Text></View>
-            <View><Text>RoundScore: { roundScore }</Text></View>
+            <View><Text style={pigStyles.heading}>WELCOME TO Hold 'em PIG GAME</Text></View>
+            <View><Text style={pigStyles.items1}>Current Dice Roll:{ currentRoll }</Text></View>
+            <View><Text style={pigStyles.items1}>RoundScore: { roundScore }</Text></View>
             <View>
                 <Pressable onPress={()=>{
                     let ranInt = randomNum()
@@ -47,7 +44,7 @@ export default function PigGame({navigation}){
                         setRoundScore(0)
                     }
 
-                }}><Text>Roll</Text>
+                }}><Text style={pigStyles.items1}>Roll</Text>
                 </Pressable>
 
                 <Pressable onPress={()=>{
@@ -62,15 +59,15 @@ export default function PigGame({navigation}){
                         //eventually I want it to set the style of the
                         //next button to true.
                     }
-                }}><Text>Hold</Text>
+                }}><Text style={pigStyles.items1}>Hold</Text>
                 </Pressable>
             </View>
 
             <View>
-                <Text>Current Score {totalScore}</Text>
+                <Text style={pigStyles.items1}>Current Score: {totalScore}</Text>
             </View>
             <View >
-                <Text>Continue</Text>
+                <Text style={pigStyles.items1}>Continue</Text>
                 <Pressable onPress={() => {
                     navigation.dispatch(
                         StackActions.replace('Trivia', {
@@ -79,7 +76,7 @@ export default function PigGame({navigation}){
                       );
                       //navigate('Trivia',{passedRound:5});
 
-                }}><Text>Next Question</Text></Pressable>
+                }}><Text style={pigStyles.next} >Next Question</Text></Pressable>
             </View>
         </View>
     );
