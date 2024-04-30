@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Button, Pressable} from "react-native";
-import { useParams } from '@react-navigation/native';
+import { View, StyleSheet, Text, Button, Pressable, useWindowDimensions} from "react-native";
+import { useParams,StackActions } from '@react-navigation/native';
 
-import { useWindowDimensions} from "react-native";
 import pigStyles from "../pigStyles";
 
-import { StackActions } from '@react-navigation/native';
 
 //every time they lose the game they lose a life.
 
