@@ -45,10 +45,21 @@ export default StyleSheet.create({
     fontSize:18,
 
   },
+  scroll:{
+    width:"100%",
+    height:500,
+  },
+  noscroll:{},
   optionsContainer: {
     backgroundColor: "#68EDC6",
     margin:15,
     flexDirection:"column",
+  },
+  optionsContainerAlt: {
+    backgroundColor: "#68EDC6",
+    margin:15,
+    height:500,
+    //flexDirection:"column",
   },
   question: {
     textAlign:"center",

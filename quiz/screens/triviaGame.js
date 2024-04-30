@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, Pressable} from "react-native";
+import { View, Text, Pressable} from "react-native";
 
 import { useWindowDimensions} from "react-native";
 import styles from "../styles";
 
 import quizData from "../quizData.json"
+import { ScrollView } from "react-native";
 
 
 
@@ -32,14 +33,17 @@ export default function TriviaGame({navigation}){
           <Text contentWidth={width} style={styles.lives}>{"Lives: " + lives}</Text>
         </View>
         <Text contentWidth={width} style={styles.question}>{question}</Text>
-        <View style={styles.optionsContainer}>
+        
+        <View style={currentRound===6 ? styles.optionsContainerAlt : styles.optionsContainer}>
+        <ScrollView style={currentRound===6 ? styles.scroll : styles.noscroll}>
         {options.map(( option, id)=>(
           <Pressable key={id} onPress={(val) => {
             if (id == answer){
 
               //any customizable pages will go here
               if(currentRound == 3){
-                navigation.navigate('PigGame',{lives:lives});
+                //navigation.navigate('PigGame',{lives:lives});
+                setCurrentRound(currentRound+2)
               }else{
                 setCurrentRound(currentRound+1)
 
@@ -54,8 +58,9 @@ export default function TriviaGame({navigation}){
           </Pressable>
           ))
         }
+        </ScrollView>
         </View>
-
+        
       </View>
     );
 
