@@ -10,13 +10,11 @@ export default StyleSheet.create({
     backgroundColor: "#DFFDFF",
     fontFamily:"Arial",
   },
-
   tabs: {
     flexDirection:"row",
     //backgroundColor:"white",
     height:70,
   },
-
   heading: {
     marginTop:90,
     marginBottom:30,
@@ -41,20 +39,17 @@ export default StyleSheet.create({
     fontSize:35,
     padding:15,
   },
-
   desc: {
     textAlign:"center",
     margin:25,
     fontSize:18,
 
   },
-
   optionsContainer: {
     backgroundColor: "#68EDC6",
     margin:15,
     flexDirection:"column",
   },
-
   question: {
     textAlign:"center",
     margin:10,
@@ -63,7 +58,6 @@ export default StyleSheet.create({
     padding:10,
     backgroundColor: "#90BEDE",
   },
-
   options: {
     margin:25,
     backgroundColor: "#E5E1EE",
@@ -73,7 +67,6 @@ export default StyleSheet.create({
     fontSize:35,
     padding:15,
   },
-
   levels: {
     backgroundColor: "#90F3FF",
     textAlign:"left",
@@ -82,7 +75,6 @@ export default StyleSheet.create({
     paddingLeft:40,
     fontSize:25,
   },
-
   lives: {
     backgroundColor: "#90F3FF",
     textAlign:"right",
