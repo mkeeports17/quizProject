@@ -1,3 +1,14 @@
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Text, Button} from "react-native";
+
+import { useWindowDimensions} from "react-native";
+import styles from "../styles";
+
+import quizData from "../quizData.json"
+
+
+
+
 export default function TriviaGame(){
     const [ question, setQuestion ] = useState("");
     const [ correctId, setCorrectId ] = useState("");
