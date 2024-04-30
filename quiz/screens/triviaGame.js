@@ -7,16 +7,7 @@ import styles from "../styles";
 import quizData from "../quizData.json"
 
 
-function PigGameButton({navigation}){
 
-
-  return(
-    <Pressable onPress={
-      () => {
-        navigation.navigate('PigGame');
-    }}><Text>PressMe</Text></Pressable>
-  )
-}
 
 export default function TriviaGame({navigation}){
     const [ question, setQuestion ] = useState("");
@@ -45,7 +36,14 @@ export default function TriviaGame({navigation}){
         {options.map(( option, id)=>(
           <Pressable key={id} onPress={(val) => {
             if (id == answer){
-              setCurrentRound(currentRound+1)
+
+              //any customizable pages will go here
+              if(currentRound == 3){
+                navigation.navigate('PigGame',{lives:lives});
+              }else{
+                setCurrentRound(currentRound+1)
+
+              }
             } else if (lives > 0){
               setLives(lives-1)
             } else {
@@ -57,7 +55,6 @@ export default function TriviaGame({navigation}){
           ))
         }
         </View>
-        <PigGameButton navigation={navigation}></PigGameButton>
 
       </View>
     );

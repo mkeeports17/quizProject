@@ -17,6 +17,8 @@ export default function PigGame(){
     [ currentRoll, setCurrentRoll ] = useState(0);
     [ roundScore, setRoundScore ] = useState(0);
     [ totalScore, setTotalScore ] = useState(0);
+
+    [ totalHolds, setTotalHolds ] = useState(0);
     return(
         <View>
             <View><Text>Lives:</Text></View>
@@ -26,6 +28,8 @@ export default function PigGame(){
             <View>
                 <Pressable onPress={()=>{
                     let ranInt = randomNum()
+                    setTotalHolds(0)
+
                     setCurrentRoll(ranInt);
                     if(ranInt > 1){
                         setRoundScore(roundScore + ranInt)
@@ -40,6 +44,13 @@ export default function PigGame(){
                     setTotalScore(roundScore+totalScore)
                     setRoundScore(0)
                     setCurrentRoll(0)
+
+                    setTotalHolds(totalHolds+1)
+                    if((totalHolds>3) && totalScore>20){
+                        console.log("Win Game!")
+                        //eventually I want it to set the style of the
+                        //next button to true.
+                    }
                 }}><Text>Hold</Text>
                 </Pressable>
             </View>
@@ -54,4 +65,19 @@ export default function PigGame(){
         </View>
     );
 
+    
 }
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    text: {
+      fontSize: 20,
+    },
+    styledText: {
+      fontWeight: 'bold',
+      color: 'blue',
+    },
+  });
