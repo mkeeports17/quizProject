@@ -19,6 +19,11 @@
             "question":"arrayVal = [“Baby”,”World”, “2 ”, “Peace”, “I I”];\nprint( arrayVal[2] + arrayVal[4] );",
             "options":["Not this one","World Peace","Twin Towers","Staged?"],
             "answer": 2
+        },
+        {
+            "question":"",
+            "options" :"",
+            "answer":""
         },        
         {
             "question":"Private void doesNothing() { //fill in this line }",
