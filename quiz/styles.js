@@ -94,5 +94,8 @@ export default StyleSheet.create({
     paddingRight:40,
     fontSize:25,
   },
+  close: {
+    
+  }
 
 });
