@@ -25,7 +25,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text contentWidth={width} style={styles.question}>{currentRound + ". " + question}</Text>
+      <View style={styles.tabs}>
+        <Text contentWidth={width} style={styles.levels}>{"Question #" + (currentRound+1)}</Text>
+        <Text contentWidth={width} style={styles.lives}>{"Lives: " + lives}</Text>
+      </View>
+      <Text contentWidth={width} style={styles.question}>{question}</Text>
       <View style={styles.optionsContainer}>
       {options.map(( option, id)=>(
           // <RenderHtml baseStyle={ baseStyle.question } contentWidth={ width } source={{ html: option }} />
@@ -40,7 +44,6 @@ export default function App() {
               setLives(3)
             }
             console.log(lives,currentRound,id,answer)
-
           }}></Button>
         ))
       }</View>
@@ -48,16 +51,3 @@ export default function App() {
     </View>
   );
 }
-
-
-
-
-// for RenderHtml components
-const baseStyle = {
-  question: {
-    fontWeight: "bold"
-  },
-  answer: {
-    textAlign: "center" 
-  }
-};
