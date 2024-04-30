@@ -34,18 +34,7 @@ export default function TriviaGame(){
         <Text contentWidth={width} style={styles.question}>{question}</Text>
         <View style={styles.optionsContainer}>
         {options.map(( option, id)=>(
-            // <Button key={id} style={styles.options} title={option}
-            // onPress={(val) => {
-            //   if (id == answer){
-            //     setCurrentRound(currentRound+1)
-            //   } else if (lives > 0){
-            //     setLives(lives-1)
-            //   } else {
-            //     setCurrentRound(0)
-            //     setLives(3)
-            //   }
-            //   console.log(lives,currentRound,id,answer)
-            // }}></Button>
+
 
           <Pressable key={id} onPress={(val) => {
             if (id == answer){
