@@ -55,7 +55,6 @@ export default function TriviaGame({navigation}){
               //any customizable pages will go here
               if(currentRound == 3){
                 navigation.navigate('PigGame',{lives:lives});
-                //setCurrentRound(currentRound+2)
               }else if(currentRound==7){
                 navigation.navigate('Close');
               }else{
