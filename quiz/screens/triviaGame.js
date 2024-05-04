@@ -32,8 +32,6 @@ export default function TriviaGame({navigation}){
           //any customizable pages will go here
           if(currentRound == 3){
             navigation.navigate('PigGame',{lives:lives});
-          }else if(currentRound == 7){
-            navigation.navigate('Close');
           }else{
             setCurrentRound(currentRound+1)
           }
@@ -45,13 +43,16 @@ export default function TriviaGame({navigation}){
       }
     }
  
-  
+    function quesNinePress(){
+      navigation.navigate('JimmyMove',{lives:lives});
+
+    }
     const { width } = useWindowDimensions();
   
     return (
       <View style={styles.container}>
         <View style={styles.tabs}>
-          <Text contentWidth={width} style={styles.levels}>{"Question #" + (currentRound+1)}</Text>
+          <Pressable disabled={currentRound!=8} onPress={()=>quesNinePress()}><Text contentWidth={width} style={styles.levels}>{"Question #" + (currentRound+1)}</Text></Pressable>
           <Text contentWidth={width} style={styles.lives}>{"Lives: " + lives}</Text>
         </View>
         <Text contentWidth={width} style={styles.question}>{question}</Text>

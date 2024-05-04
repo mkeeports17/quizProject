@@ -39,6 +39,21 @@
             "question":"2 + 2 = ?",
             "options":["22","-4","for","DNE", "4"],
             "answer": 4
+        },
+        {
+            "question":"A rectangular garden has a perimeter of 28 meters.\n The length is 5 meters longer than the width, what is the sum of the widths?",
+            "options":["10","8","7","6"],
+            "answer":""
+        },
+        {
+            "question":"jimmyMove",
+            "options":["hullothere!!","-4","for","DNE", "4"],
+            "answer":""
+        },
+        {
+            "question":"newQuestion would go here",
+            "options":["hullothere!!","i sure am stupid","what","DNE"],
+            "answer":1
         }
 
     ]
