@@ -1,60 +1,82 @@
 {
     "questions":[
         {
+            "#": "0",
+            "question":"blank",
+            "options":[""],
+            "answer": 0
+        },
+        {
+            "#": "1",
             "question":"What is the best intramural sport?",
             "options":["Flag Football","Flag Football","Flag Football","Flag Football"],
             "answer": 0
         },
         {
+            "#": "2",
             "question":"Would you marry kim phipps?",
             "options":["Yes!","No","I'd take her to the spring fling","I'm her husband"],
             "answer": 3
         },
         {
+            "#": "3",
             "question":"<when does lottie close?>",
             "options":["Way too early","</ when does lottie close>","2:30pm","7px"],
             "answer": 1
         },       
         {
+            "#": "4",
             "question":"arrayVal = [“Baby”,”World”, “2 ”, “Peace”, “I I”];\nprint( arrayVal[2] + arrayVal[4] );",
             "options":["Not this one","World Peace","Twin Towers","Staged?"],
             "answer": 2
         },
         {
+            "#": "5",
             "question":"",
             "options" :"",
             "answer":""
         },        
         {
+            "#": "6",
             "question":"Private void doesNothing() { //fill in this line }",
             "options":["","return null","return this","Me.Close()"],
             "answer": 0
         },       
         {
+            "#": "7",
             "question":"Why did Suberi end class early",
             "options":["Fire drill","To play ping pong","To grade papers","Computer hungry"],
             "answer": 3
         },
         {
+            "#": "8",
             "question":"2 + 2 = ?",
             "options":["22","-4","for","DNE", "4"],
             "answer": 4
         },
         {
+            "#": "9",
             "question":"A rectangular garden has a perimeter of 28 meters.\n The length is 5 meters longer than the width, what is the sum of the widths?",
             "options":["10","8","7","6"],
             "answer":20
         },
         {
+            "#": "10",
             "question":"jimmyMove",
             "options":["hullothere!!","-4","for","DNE", "4"],
             "answer":""
         },
         {
+            "#": "11",
             "question":"Are you smart?",
-            "options":["Very, Very Smart!","i sure am stupid","im as smart as you","waffles?!?"],
+            "options":["Very, Very Smart!","I sure am stupid","Im as smart as you","waffles?!?"],
             "answer":1
+        },
+        {
+            "#": "12",
+            "question":"You Miss 100% of the Shots You Don’t Take",
+            "options":["Wayne Gretzky", "Wayne Gretski", "Whine Grurtsky", "Wanney Gurtis"],
+            "answer": 4
         }
-
     ]
 }

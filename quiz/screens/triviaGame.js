@@ -24,11 +24,23 @@ export default function TriviaGame({navigation}){
       setQuestion(quizData.questions[currentRound].question);
       setOptions(quizData.questions[currentRound].options);
       setAnswer(quizData.questions[currentRound].answer)
-      
     }, [currentRound]);
 
-    function handleAnswer( id ){
-      if (id == answer){
+    useEffect(() => {
+      if(currentRound ==10 ){
+
+      }
+      setQuestion(quizData.questions[currentRound].question);
+      setOptions(quizData.questions[currentRound].options);
+      setAnswer(quizData.questions[currentRound].answer)
+    }, [currentRound]);
+
+    function shuffleArray(){
+      
+    }
+
+    function handleAnswer( option, id ){
+      if (id == answer || option.equals("Wayne Gretzky")){
           //any customizable pages will go here
           if(currentRound == 3){
             navigation.navigate('PigGame',{lives:lives});
@@ -45,7 +57,6 @@ export default function TriviaGame({navigation}){
  
     function quesNinePress(){
       navigation.navigate('JimmyMove',{lives:lives});
-
     }
     const { width } = useWindowDimensions();
   
@@ -60,7 +71,7 @@ export default function TriviaGame({navigation}){
         <View style={currentRound===7 ? styles.optionsContainerAlt : styles.optionsContainer}>
         <ScrollView style={currentRound===7 ? styles.scroll : styles.noscroll}>
         {options.map(( option, id)=>(
-          <Pressable key={id} onPress={() => handleAnswer(id)}>
+          <Pressable key={id} onPress={() => handleAnswer(option, id)}>
             <Text key={id} style={styles.options}>{option}</Text>
           </Pressable>
           ))
