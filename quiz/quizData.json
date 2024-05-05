@@ -43,7 +43,7 @@
         {
             "question":"A rectangular garden has a perimeter of 28 meters.\n The length is 5 meters longer than the width, what is the sum of the widths?",
             "options":["10","8","7","6"],
-            "answer":""
+            "answer":20
         },
         {
             "question":"jimmyMove",
@@ -51,8 +51,8 @@
             "answer":""
         },
         {
-            "question":"newQuestion would go here",
-            "options":["hullothere!!","i sure am stupid","what","DNE"],
+            "question":"Are you smart?",
+            "options":["Very, Very Smart!","i sure am stupid","im as smart as you","waffles?!?"],
             "answer":1
         }
 
