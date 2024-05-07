@@ -20,7 +20,7 @@ export default function JimmyMove({navigation}){
     const [yval, setYVal ] = useState((height/2));
 
     const [pokes, setPokes] = useState(0);
-
+    const maxPokes = 5;
 
 
 
@@ -48,7 +48,7 @@ export default function JimmyMove({navigation}){
 
     }
     function nextRound(){
-        if(pokes>= 10){
+        if(pokes>= maxPokes){
             navigation.dispatch(
                 StackActions.replace('Trivia', {
                     passedRound:10, lives:lives
@@ -70,13 +70,13 @@ export default function JimmyMove({navigation}){
                             {
                             transform: [
                                 { translateY: moveY},
-                                { translateX: moveX}
+                                { translateX: moveX},
                             ]
                             }
                         ]}>
                     <Pressable onPress={() => moveJimmy()}><Image style={styles.image} source={require('../images/jimmy.png')} /></Pressable>
                 </Animated.View>
-                <View style={(pokes>=10)?styles.visibleText:styles.invisibleText}>
+                <View style={(pokes>=maxPokes)?styles.visibleText:styles.invisibleText}>
                     <Pressable onPress={() => nextRound()}><Text style={styles.buttonText}>Next Level</Text></Pressable>
                 </View>
             </View>

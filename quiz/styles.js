@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
 
   container: {
-    marginTop:0,
+    marginTop:-50,
     height:850,
     //textAlign:"center",
     //alignItems: "center",

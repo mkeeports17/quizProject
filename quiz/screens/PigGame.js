@@ -63,13 +63,13 @@ export default function PigGame({navigation}){
     return(
         <View style={pigStyles.container}>
             <View><Text>Lives:{livesAmount}</Text></View>
-            <View><Text style={pigStyles.heading}>WELCOME TO Hold 'em PIG GAME</Text></View>
+            <View><Text style={pigStyles.heading}>WELCOME TO 20 and Hold 'em PIG GAME</Text></View>
             <View><Text style={pigStyles.items1}>Current Dice Roll:{ currentRoll }</Text></View>
             <View><Text style={pigStyles.items1}>RoundScore: { roundScore }</Text></View>
             <View>
-                <Pressable onPress={()=>onRoll()}><Text style={pigStyles.items1}>Roll</Text></Pressable>
+                <Pressable onPress={()=>onRoll()}><Text style={[pigStyles.items1,{backgroundColor:"#BDFFC6"}]}>Roll</Text></Pressable>
 
-                <Pressable onPress={()=>onHold()}><Text style={pigStyles.items1}>Hold</Text></Pressable>
+                <Pressable onPress={()=>onHold()}><Text style={[pigStyles.items1,{backgroundColor:"#BDD5FF"}]}>Hold</Text></Pressable>
             </View>
 
             <View>

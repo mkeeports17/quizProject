@@ -28,6 +28,7 @@ export default function Home({navigation}){
                 <Text style={styles.begin}>Begin Quiz</Text>
             </Pressable>
 
+
         </View>
     )
 

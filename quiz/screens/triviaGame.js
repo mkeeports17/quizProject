@@ -19,35 +19,54 @@ export default function TriviaGame({navigation}){
     const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
     const [ lives, setLives ] = useState(route.params.lives);
 
+    const[ optionColor, setOptionColor ] = useState("#E5E1EE");
 
     useEffect(() => {
+      console.log("current round " + currentRound)
+      //if current Round equals a certain number, then it will link to the end page.
+      if (currentRound == quizData.questions.length-1) {
+        console.log("worked!")
+        navigation.replace('WinDead', { lives: lives, gameWon: true });
+
+      } else{
       setQuestion(quizData.questions[currentRound].question);
       setOptions(quizData.questions[currentRound].options);
       setAnswer(quizData.questions[currentRound].answer)
-      
+      }
+
+
     }, [currentRound]);
 
     function handleAnswer( id ){
       if (id == answer){
           //any customizable pages will go here
           if(currentRound == 3){
-            navigation.navigate('PigGame',{lives:lives});
+            navigation.replace('PigGame',{lives:lives});
           }else{
             setCurrentRound(currentRound+1)
           }
       } else if (lives > 0){
           setLives(lives-1)
+          setOptionColor('red');
+  
+          setTimeout(() => {
+            setOptionColor("#E5E1EE");
+          }, 200); 
       } else {
-        setCurrentRound(0)
-        setLives(3)
+        navigation.replace('WinDead', { lives: lives, gameWon: false });
       }
     }
  
     function quesNinePress(){
-      navigation.navigate('JimmyMove',{lives:lives});
+      navigation.replace('JimmyMove',{lives:lives});
 
     }
     const { width } = useWindowDimensions();
+
+    function makeRedBut() {
+      // Change button color to red temporarily
+
+    };
   
     return (
       <View style={styles.container}>
@@ -60,8 +79,8 @@ export default function TriviaGame({navigation}){
         <View style={currentRound===7 ? styles.optionsContainerAlt : styles.optionsContainer}>
         <ScrollView style={currentRound===7 ? styles.scroll : styles.noscroll}>
         {options.map(( option, id)=>(
-          <Pressable key={id} onPress={() => handleAnswer(id)}>
-            <Text key={id} style={styles.options}>{option}</Text>
+          <Pressable key={id} onPressOut={()=>makeRedBut()} onPress={() => handleAnswer(id)}>
+            <Text key={id} style={[styles.options, {backgroundColor:optionColor}]}>{option}</Text>
           </Pressable>
           ))
         }
