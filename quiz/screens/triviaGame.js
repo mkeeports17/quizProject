@@ -25,13 +25,14 @@ export default function TriviaGame({navigation}){
       console.log("current round " + currentRound)
       //if current Round equals a certain number, then it will link to the end page.
       if (currentRound == quizData.questions.length-1) {
-        console.log("worked!")
         navigation.replace('WinDead', { lives: lives, gameWon: true });
 
       } else{
       setQuestion(quizData.questions[currentRound].question);
       setOptions(quizData.questions[currentRound].options);
       setAnswer(quizData.questions[currentRound].answer)
+      }
+    
     }, [currentRound]);
 
     useEffect(() => {
