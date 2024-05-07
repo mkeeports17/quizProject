@@ -14,6 +14,7 @@ export default function TriviaGame({navigation}){
     const [ correctId, setCorrectId ] = useState("");
     const [ currentRound, setCurrentRound] = useState(route.params.passedRound);
 
+    if(currentRound==0){setCurrentRound(1)}
 
     const [ options, setOptions] = useState(quizData.questions[currentRound].options);
     const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
@@ -49,7 +50,9 @@ export default function TriviaGame({navigation}){
     }
 
     function handleAnswer( option, id ){
-      if (id == answer || option.equals("Wayne Gretzky")){
+      console.log(answer + " but was " + id);
+      if (id == answer){
+        // || option.equals("Wayne Gretzky")
           //any customizable pages will go here
           if(currentRound == 3){
             navigation.replace('PigGame',{lives:lives});
@@ -82,15 +85,15 @@ export default function TriviaGame({navigation}){
     return (
       <View style={styles.container}>
         <View style={styles.tabs}>
-          <Pressable disabled={currentRound!=8} onPress={()=>quesNinePress()}><Text contentWidth={width} style={styles.levels}>{"Question #" + (currentRound+1)}</Text></Pressable>
+          <Pressable disabled={currentRound!=9} onPress={()=>quesNinePress()}><Text contentWidth={width} style={styles.levels}>{"Question #" + currentRound}</Text></Pressable>
           <Text contentWidth={width} style={styles.lives}>{"Lives: " + lives}</Text>
         </View>
         <Text contentWidth={width} style={styles.question}>{question}</Text>
         
-        <View style={currentRound===7 ? styles.optionsContainerAlt : styles.optionsContainer}>
-        <ScrollView style={currentRound===7 ? styles.scroll : styles.noscroll}>
+        <View style={currentRound===8 ? styles.optionsContainerAlt : styles.optionsContainer}>
+        <ScrollView style={currentRound===8 ? styles.scroll : styles.noscroll}>
         {options.map(( option, id)=>(
-          <Pressable key={id} onPressOut={()=>makeRedBut()} onPress={() => handleAnswer(id)}>
+          <Pressable key={id} onPressOut={()=>makeRedBut()} onPress={() => handleAnswer(option, id)}>
             <Text key={id} style={[styles.options, {backgroundColor:optionColor}]}>{option}</Text>
           </Pressable>
           ))

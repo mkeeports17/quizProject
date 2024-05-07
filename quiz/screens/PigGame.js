@@ -81,7 +81,7 @@ export default function PigGame({navigation}){
                     if((totalScore > 5)&& totalHolds > 3){
                         navigation.dispatch(
                             StackActions.replace('Trivia', {
-                                passedRound:5, lives:livesAmount
+                                passedRound:6, lives:livesAmount
                             })
                         );
                     }

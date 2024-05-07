@@ -51,7 +51,7 @@ export default function JimmyMove({navigation}){
         if(pokes>= maxPokes){
             navigation.dispatch(
                 StackActions.replace('Trivia', {
-                    passedRound:10, lives:lives
+                    passedRound:11, lives:lives
                 })
             );
         }

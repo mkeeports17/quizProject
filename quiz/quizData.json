@@ -32,9 +32,9 @@
         },
         {
             "#": "5",
-            "question":"",
-            "options" :"",
-            "answer":""
+            "question":"You should never see this",
+            "options" :["pigGame"],
+            "answer":0
         },        
         {
             "#": "6",
@@ -62,8 +62,8 @@
         },
         {
             "#": "10",
-            "question":"jimmyMove",
-            "options":["hullothere!!","-4","for","DNE", "4"],
+            "question":"You should never see this",
+            "options":["jimmyMove"],
             "answer":""
         },
         {
@@ -72,7 +72,6 @@
             "options":["Very, Very Smart!","I sure am stupid","Im as smart as you","waffles?!?"],
             "answer":1
         },
-
         {
             "#": "12",
             "question":"You Miss 100% of the Shots You Don’t Take",

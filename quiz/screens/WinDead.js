@@ -55,7 +55,7 @@ export default function WinDead({navigation}){
                 </Pressable>
             </View>
             <View style={[styles.smcontainer,{marginTop:20}]}>
-                <Text >by: Ezra Miller and Michael Keeports</Text>
+                <Text>by: Ezra Miller and Michael Keeports</Text>
             </View>
         </View>
     )
