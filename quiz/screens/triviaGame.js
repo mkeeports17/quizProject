@@ -14,8 +14,9 @@ export default function TriviaGame({navigation}){
     const [ question, setQuestion ] = useState("");
     const [ correctId, setCorrectId ] = useState("");
     const [ currentRound, setCurrentRound] = useState(route.params.passedRound);
+    const newOptions = [];
 
-    if(currentRound==0){setCurrentRound(1)}
+    if(currentRound==0){setCurrentRound(11)}
 
     const [ options, setOptions] = useState(quizData.questions[currentRound].options);
     const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
@@ -28,69 +29,66 @@ export default function TriviaGame({navigation}){
       //if current Round equals a certain number, then it will link to the end page.
       if (currentRound == quizData.questions.length-1) {
         navigation.replace('WinDead', { lives: lives, gameWon: true });
-
+        console.log("end of the game.");
       } else{
         setQuestion(quizData.questions[currentRound].question);
         setOptions(quizData.questions[currentRound].options);
         setAnswer(quizData.questions[currentRound].answer)
       }
+
       if (currentRound == 12) {
-        const interval = setInterval(() => {
+         const interval = setInterval(() => {
+          setCurrentRound(12)
+          setOptions(quizData.questions[currentRound].options)
           shuffleArray();
-        }, 1000);
-        //return () => clearInterval(interval);
+         }, Math.floor(Math.random() * (2000 - 500 + 1) ) + 500);
+         return () => clearInterval(interval);
       }
-    
     }, [currentRound]);
-
-    useEffect(() => {
-      
-    }, [currentRound]);
-
-
-    // function initShuffle(){
-    //   useEffect(() => {
-    //     if(currentRound==12){
-    //       setTimeout(() => {
-    //         shuffleArray();
-    //       }, 1000);
-    //     }
-        
-    //   }, 1000);
-    // }
 
     function shuffleArray(){
-      const newOptions = [];
-
-      newOptions[0] = options[1];
-      newOptions[1] = options[3];
-      newOptions[2] = options[0];
-      newOptions[3] = options[2];
-
-      if(options[0]==="Wayne Gretzky"){
-        setAnswer(2);
-      } else if(options[1]==="Wayne Gretzky"){
-        setAnswer(0);
-      } else if(options[2]==="Wayne Gretzky"){
-        setAnswer(3);
-      } else if(options[3]==="Wayne Gretzky"){
-        setAnswer(1);
+      setCurrentRound(12);
+      setOptions(quizData.questions[currentRound].options)
+      const newArray = [...quizData.questions[12].options]; // Create a copy of the original array
+      for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; // Swap elements
       }
+      setOptions(newArray); // Update the state with the shuffled array
+    };
 
-      setOptions(newOptions); 
-    }
+    // function shuffleArraye(){
+    //   setCurrentRound(12);
+    //   console.log(currentRound);
+    //   setOptions(quizData.questions[10].options);
+    //   newOptions[0] = options[1];
+    //   newOptions[1] = options[3];
+    //   newOptions[2] = options[0];
+    //   newOptions[3] = options[2];
+    //   setOptions(newOptions); 
+    //   console.log(options[0].toString()+","+options[1].toString()+","+options[2].toString()+","+options[3].toString() + " -> " + newOptions[0].toString()+","+newOptions[1].toString()+","+newOptions[2].toString()+","+newOptions[3].toString());
+    //   console.log(currentRound);
+    //   if(options[0]==="Wayne Gretzky"){
+    //     setAnswer(2);
+    //   } else if(options[1]==="Wayne Gretzky"){
+    //     setAnswer(0);
+    //   } else if(options[2]==="Wayne Gretzky"){
+    //     setAnswer(3);
+    //   } else if(options[3]==="Wayne Gretzky"){
+    //     setAnswer(1);
+    //   }
+    // }
 
     function handleAnswer( option, id ){
       console.log(answer + " but was " + id);
-      if (id == answer){
-        // || option.equals("Wayne Gretzky")
+      if (id == answer || option === "Wayne Gretzky"){
           //any customizable pages will go here
           if(currentRound == 3){
             navigation.replace('PigGame',{lives:lives});
           }else{
             setCurrentRound(currentRound+1)
           }
-      } else if (lives > 0){
+      } else if (lives > 1){
         if(currentRound == 12){
           shuffleArray();
         }
@@ -110,10 +108,7 @@ export default function TriviaGame({navigation}){
     }
     const { width } = useWindowDimensions();
 
-    function makeRedBut() {
-      // Change button color to red temporarily
 
-    };
   
     return (
       <View style={styles.container}>
@@ -126,7 +121,7 @@ export default function TriviaGame({navigation}){
         <View style={currentRound===8 ? styles.optionsContainerAlt : styles.optionsContainer}>
         <ScrollView style={currentRound===8 ? styles.scroll : styles.noscroll}>
         {options.map(( option, id)=>(
-          <Pressable key={id} onPressOut={()=>makeRedBut()} onPress={() => handleAnswer(option, id)}>
+          <Pressable key={id} onPress={() => handleAnswer(option, id)}>
             <Text key={id} style={[styles.options, {backgroundColor:optionColor}]}>{option}</Text>
           </Pressable>
           ))
