@@ -4,15 +4,13 @@ import { View, Text, Pressable} from "react-native";
 import { useWindowDimensions} from "react-native";
 import styles from "../styles";
 
-function onPressFunction(){
-
-}
-
-export default function Close({navigation}){
+export default function Cat({navigation}){
     return(
 
         <View style={styles.container}>
-            <Text style={styles.close} >Me.Close()</Text>
+            <Text style={styles.close}>Tap on the cutest cat!</Text>
+
+            <Pressable><Image source={require('../images/cat1.jpg')} /></Pressable>
         </View>
     )
 
