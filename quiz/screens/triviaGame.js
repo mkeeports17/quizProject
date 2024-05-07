@@ -32,13 +32,23 @@ export default function TriviaGame({navigation}){
       setQuestion(quizData.questions[currentRound].question);
       setOptions(quizData.questions[currentRound].options);
       setAnswer(quizData.questions[currentRound].answer)
-      }
-
-
     }, [currentRound]);
 
-    function handleAnswer( id ){
-      if (id == answer){
+    useEffect(() => {
+      if(currentRound ==10 ){
+
+      }
+      setQuestion(quizData.questions[currentRound].question);
+      setOptions(quizData.questions[currentRound].options);
+      setAnswer(quizData.questions[currentRound].answer)
+    }, [currentRound]);
+
+    function shuffleArray(){
+      
+    }
+
+    function handleAnswer( option, id ){
+      if (id == answer || option.equals("Wayne Gretzky")){
           //any customizable pages will go here
           if(currentRound == 3){
             navigation.replace('PigGame',{lives:lives});
