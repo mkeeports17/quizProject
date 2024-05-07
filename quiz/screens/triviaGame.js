@@ -4,6 +4,7 @@ import { useRoute } from '@react-navigation/native';
 
 import styles from "../styles";
 import quizData from "../quizData.json"
+import { NativeStackView } from "@react-navigation/native-stack";
 
 
 
@@ -29,24 +30,54 @@ export default function TriviaGame({navigation}){
         navigation.replace('WinDead', { lives: lives, gameWon: true });
 
       } else{
-      setQuestion(quizData.questions[currentRound].question);
-      setOptions(quizData.questions[currentRound].options);
-      setAnswer(quizData.questions[currentRound].answer)
+        setQuestion(quizData.questions[currentRound].question);
+        setOptions(quizData.questions[currentRound].options);
+        setAnswer(quizData.questions[currentRound].answer)
+      }
+      if (currentRound == 12) {
+        const interval = setInterval(() => {
+          shuffleArray();
+        }, 1000);
+        //return () => clearInterval(interval);
       }
     
     }, [currentRound]);
 
     useEffect(() => {
-      if(currentRound ==10 ){
-
-      }
-      setQuestion(quizData.questions[currentRound].question);
-      setOptions(quizData.questions[currentRound].options);
-      setAnswer(quizData.questions[currentRound].answer)
+      
     }, [currentRound]);
 
+
+    // function initShuffle(){
+    //   useEffect(() => {
+    //     if(currentRound==12){
+    //       setTimeout(() => {
+    //         shuffleArray();
+    //       }, 1000);
+    //     }
+        
+    //   }, 1000);
+    // }
+
     function shuffleArray(){
-      
+      const newOptions = [];
+
+      newOptions[0] = options[1];
+      newOptions[1] = options[3];
+      newOptions[2] = options[0];
+      newOptions[3] = options[2];
+
+      if(options[0]==="Wayne Gretzky"){
+        setAnswer(2);
+      } else if(options[1]==="Wayne Gretzky"){
+        setAnswer(0);
+      } else if(options[2]==="Wayne Gretzky"){
+        setAnswer(3);
+      } else if(options[3]==="Wayne Gretzky"){
+        setAnswer(1);
+      }
+
+      setOptions(newOptions); 
     }
 
     function handleAnswer( option, id ){
@@ -60,12 +91,15 @@ export default function TriviaGame({navigation}){
             setCurrentRound(currentRound+1)
           }
       } else if (lives > 0){
-          setLives(lives-1)
+        if(currentRound == 12){
+          shuffleArray();
+        }
+        setLives(lives-1)
           setOptionColor('red');
   
           setTimeout(() => {
             setOptionColor("#E5E1EE");
-          }, 200); 
+          }, 200);
       } else {
         navigation.replace('WinDead', { lives: lives, gameWon: false });
       }
@@ -73,7 +107,6 @@ export default function TriviaGame({navigation}){
  
     function quesNinePress(){
       navigation.replace('JimmyMove',{lives:lives});
-
     }
     const { width } = useWindowDimensions();
 
