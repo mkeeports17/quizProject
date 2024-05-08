@@ -56,7 +56,7 @@
         },
         {
             "#": "9",
-            "question":"A rectangular garden has a perimeter of 28 meters.\n The length is 5 meters longer than the width, what is the sum of the widths?",
+            "question":"A garden perimeter=28m. The length is 5m longer than the width, what's the sum of the widths?",
             "options":["10","8","7","6"],
             "answer":20
         },

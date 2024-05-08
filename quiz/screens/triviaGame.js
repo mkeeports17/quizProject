@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Pressable, useWindowDimensions, ScrollView} from "react-native";
+import { View, Text, Pressable, useWindowDimensions, ScrollView, Dimensions} from "react-native";
 import { useRoute } from '@react-navigation/native'; 
 
 import styles from "../styles";
@@ -16,7 +16,8 @@ export default function TriviaGame({navigation}){
     const [ currentRound, setCurrentRound] = useState(route.params.passedRound);
     const newOptions = [];
 
-    if(currentRound==0){setCurrentRound(11)}
+
+    if(currentRound==0){setCurrentRound(1)}
 
     const [ options, setOptions] = useState(quizData.questions[currentRound].options);
     const [ answer, setAnswer ] = useState(quizData.questions[currentRound].answer);
@@ -57,27 +58,7 @@ export default function TriviaGame({navigation}){
       setOptions(newArray); // Update the state with the shuffled array
     };
 
-    // function shuffleArraye(){
-    //   setCurrentRound(12);
-    //   console.log(currentRound);
-    //   setOptions(quizData.questions[10].options);
-    //   newOptions[0] = options[1];
-    //   newOptions[1] = options[3];
-    //   newOptions[2] = options[0];
-    //   newOptions[3] = options[2];
-    //   setOptions(newOptions); 
-    //   console.log(options[0].toString()+","+options[1].toString()+","+options[2].toString()+","+options[3].toString() + " -> " + newOptions[0].toString()+","+newOptions[1].toString()+","+newOptions[2].toString()+","+newOptions[3].toString());
-    //   console.log(currentRound);
-    //   if(options[0]==="Wayne Gretzky"){
-    //     setAnswer(2);
-    //   } else if(options[1]==="Wayne Gretzky"){
-    //     setAnswer(0);
-    //   } else if(options[2]==="Wayne Gretzky"){
-    //     setAnswer(3);
-    //   } else if(options[3]==="Wayne Gretzky"){
-    //     setAnswer(1);
-    //   }
-    // }
+
 
     function handleAnswer( option, id ){
       console.log(answer + " but was " + id);
@@ -106,8 +87,13 @@ export default function TriviaGame({navigation}){
     function quesNinePress(){
       navigation.replace('JimmyMove',{lives:lives});
     }
-    const { width } = useWindowDimensions();
-
+    const { width,height } = useWindowDimensions();
+    function ScaleFontSize(fontSize) {
+      let SCALE = 650;
+      const ratio = fontSize / SCALE; // get ratio based on your standard scale 
+      const newSize = Math.round(ratio * height);
+      return newSize; 
+    } 
 
   
     return (
@@ -122,7 +108,7 @@ export default function TriviaGame({navigation}){
         <ScrollView style={currentRound===8 ? styles.scroll : styles.noscroll}>
         {options.map(( option, id)=>(
           <Pressable key={id} onPress={() => handleAnswer(option, id)}>
-            <Text key={id} style={[styles.options, {backgroundColor:optionColor}]}>{option}</Text>
+            <Text key={id} style={[styles.options, {backgroundColor:optionColor, fontSize:ScaleFontSize(25)}]}>{option}</Text>
           </Pressable>
           ))
         }

@@ -14,7 +14,7 @@ export default function Home({navigation}){
     return(
 
         <View style={styles.container}>
-            <Text style={styles.heading}>Impossible Quiz</Text>
+            <Text style={[styles.heading,{marginTop:"-50"}]}>Impossible Quiz</Text>
             <Text style={styles.credits}>by: Ezra Miller and Michael Keeports</Text>
             <Text style={styles.desc}>"The Impossible Quiz: Mobile Edition" brings the classic 
                 brain-teasing experience from Coolmath to your fingertips. Prepare to embark on an 
