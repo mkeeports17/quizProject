@@ -94,11 +94,6 @@ export default StyleSheet.create({
     paddingRight:40,
     fontSize:25,
   },
-  close: {
-    textAlign:"center",
-    fontSize:50,
-    margin:50,
-    
-  }
+  
 
 });
