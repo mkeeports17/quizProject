@@ -26,11 +26,9 @@ export default function TriviaGame({navigation}){
     const[ optionColor, setOptionColor ] = useState("#E5E1EE");
 
     useEffect(() => {
-      console.log("current round " + currentRound)
       //if current Round equals a certain number, then it will link to the end page.
       if (currentRound == quizData.questions.length-1) {
         navigation.replace('WinDead', { lives: lives, gameWon: true });
-        console.log("end of the game.");
       } else{
         setQuestion(quizData.questions[currentRound].question);
         setOptions(quizData.questions[currentRound].options);
@@ -61,7 +59,6 @@ export default function TriviaGame({navigation}){
 
 
     function handleAnswer( option, id ){
-      console.log(answer + " but was " + id);
       if (id == answer || option === "Wayne Gretzky"){
           //any customizable pages will go here
           if(currentRound == 3){
