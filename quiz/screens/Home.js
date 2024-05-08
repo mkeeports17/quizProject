@@ -29,7 +29,7 @@ export default function Home({navigation}){
             </Pressable>
 
             <Pressable onPress={() => {
-                    navigation.navigate('Cat', {passedRound: 0, lives: 3});
+                    navigation.navigate('Cat', {passedRound: 15, lives: 3});
                 }}>
                 <Text>Cat</Text>
             </Pressable>

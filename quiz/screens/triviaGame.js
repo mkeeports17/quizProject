@@ -63,6 +63,8 @@ export default function TriviaGame({navigation}){
           //any customizable pages will go here
           if(currentRound == 3){
             navigation.replace('PigGame',{lives:lives});
+          } else if (currentRound==14){
+            navigation.replace('Cat',{lives:lives, passedRound:currentRound+1});
           }else{
             setCurrentRound(currentRound+1)
           }
