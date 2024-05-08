@@ -16,12 +16,13 @@ export default function JimmyMove({navigation}){
 
     const width = Dimensions.get('window').width-50;
     const height = Dimensions.get('window').height-50;
-    const [xval, setXVal ] = useState((width/2));
-    const [yval, setYVal ] = useState((height/2));
+    const [xval, setXVal ] = useState(50);
+    const [yval, setYVal ] = useState(50);
 
     const [pokes, setPokes] = useState(0);
-    const maxPokes = 5;
+    const maxPokes = 15;
 
+    const offset = 20;
 
 
     function randomInt(min, max) {
@@ -31,7 +32,7 @@ export default function JimmyMove({navigation}){
     function moveJimmy() {
         setPokes(pokes+1)
         setXVal(randomInt(-width/2,width/2))
-        setYVal(randomInt(-height/2, height/2))
+        setYVal(randomInt((-height/2)+offset, (height/2)-offset))
 
 
         Animated.timing(moveX, {

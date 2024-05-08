@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Pressable, useWindowDimensions, ScrollView, Dimensions} from "react-native";
+import { View, Text, Pressable, useWindowDimensions, ScrollView, Dimensions, LogBox } from "react-native";
 import { useRoute } from '@react-navigation/native'; 
 
 import styles from "../styles";
@@ -10,6 +10,8 @@ import { NativeStackView } from "@react-navigation/native-stack";
 
 
 export default function TriviaGame({navigation}){
+LogBox.ignoreAllLogs(true)
+
     const route = useRoute(); 
     const [ question, setQuestion ] = useState("");
     const [ correctId, setCorrectId ] = useState("");
