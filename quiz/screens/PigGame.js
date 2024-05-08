@@ -26,7 +26,7 @@ export default function PigGame({navigation}){
     [ totalHolds, setTotalHolds ] = useState(0);
     [ isStyled, setIsStyled ] = useState(true);
 
-
+    const maxPointsNeeded = 20;
     function onRoll(){
         let ranInt = randomNum()
         setTotalHolds(0)
@@ -54,7 +54,7 @@ export default function PigGame({navigation}){
         setCurrentRoll(0)
 
         setTotalHolds(totalHolds+1)
-        if((totalHolds>3) && totalScore>20){
+        if((totalHolds>3) && totalScore>maxPointsNeeded){
             setIsStyled(false)
 
         }
@@ -76,7 +76,6 @@ export default function PigGame({navigation}){
                 <Text style={pigStyles.items1}>Current Score: {totalScore}</Text>
             </View>
             <View >
-                <Text style={pigStyles.items1}>Continue</Text>
                 <Pressable onPress={() => {
                     if((totalScore > 5)&& totalHolds > 3){
                         navigation.dispatch(
@@ -85,7 +84,7 @@ export default function PigGame({navigation}){
                             })
                         );
                     }
-                }}><Text style={((totalScore > 5) && totalHolds > 3)?pigStyles.afternext:pigStyles.next}>Next Question</Text></Pressable>
+                }}><Text style={((totalScore > maxPointsNeeded) && totalHolds > 3)?pigStyles.afternext:pigStyles.next}>Next Question</Text></Pressable>
             </View>
         </View>
     );
