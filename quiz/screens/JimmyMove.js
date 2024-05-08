@@ -9,18 +9,18 @@ import { useRoute, StackActions } from '@react-navigation/native';
 
 export default function JimmyMove({navigation}){
     const route = useRoute(); 
-    const moveX = useRef(new Animated.Value(0)).current;
-    const moveY = useRef(new Animated.Value(0)).current;
     const [ lives, setLives ] = useState(route.params.lives);
 
+    const moveX = useRef(new Animated.Value(0)).current;
+    const moveY = useRef(new Animated.Value(0)).current;
+    const [ xval, setXVal ] = useState(50);
+    const [ yval, setYVal ] = useState(50);
 
     const width = Dimensions.get('window').width-50;
     const height = Dimensions.get('window').height-50;
-    const [xval, setXVal ] = useState(50);
-    const [yval, setYVal ] = useState(50);
 
-    const [pokes, setPokes] = useState(0);
     const maxPokes = 15;
+    const [ pokes, setPokes ] = useState(0);
 
     const offset = 20;
 

@@ -3,12 +3,6 @@ import { View, Text, Pressable, StyleSheet} from "react-native";
 
 import { useRoute } from '@react-navigation/native'; 
 
-import { useWindowDimensions} from "react-native";
-//import styles from "../styles";
-
-function onPressFunction(){
-
-}
 
 export default function WinDead({navigation}){
     const route = useRoute(); 
@@ -16,14 +10,15 @@ export default function WinDead({navigation}){
 
     const lostString = "You lost the game, better luck next time";
     const winString = "You won, congrats!!!!";
-    const [complementString, setComplementString] = useState("No complement for you loser!");
-    const [displayString, setDisplayString ]= useState();
+    const apiUrl = 'https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments';
+
+    const [ complementString, setComplementString ] = useState("Loading");
+    const [ displayString, setDisplayString ]= useState();
 
 
 
     useEffect(() =>{
         // START
-        var apiUrl = 'https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments';
 
         if(gameWon == true){
             fetch(apiUrl)
@@ -33,6 +28,7 @@ export default function WinDead({navigation}){
 
         }else{
             setDisplayString(lostString);
+            setComplementString("No complement for you loser!")
         }
         },[])
 

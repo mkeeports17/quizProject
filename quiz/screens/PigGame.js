@@ -54,7 +54,7 @@ export default function PigGame({navigation}){
         setCurrentRoll(0)
 
         setTotalHolds(totalHolds+1)
-        if((totalHolds>3) && totalScore>maxPointsNeeded){
+        if((totalHolds>3) && totalScore>=maxPointsNeeded){
             setIsStyled(false)
 
         }
@@ -84,7 +84,7 @@ export default function PigGame({navigation}){
                             })
                         );
                     }
-                }}><Text style={((totalScore > maxPointsNeeded) && totalHolds > 3)?pigStyles.afternext:pigStyles.next}>Next Question</Text></Pressable>
+                }}><Text style={((totalScore >= maxPointsNeeded) && totalHolds > 3)?pigStyles.afternext:pigStyles.next}>Next Question</Text></Pressable>
             </View>
         </View>
     );
