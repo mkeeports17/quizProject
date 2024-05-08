@@ -6,28 +6,66 @@ import { useWindowDimensions} from "react-native";
 export default function Cat({navigation}){
     return(
 
-        <View style={styles.container}>
-            <Text style={styles.cat}>Tap on the cutest cat!</Text>
+        <View style={styles.cat}>
+            <Text style={styles.heading}>Tap on the cutest cat!</Text>
+            
 
-            <Pressable style={styles.catimage}><Image source={require('../images/cat1.jpg')} /></Pressable>
-            <Pressable style={styles.catimage}><Image source={require('../images/cat2.jpg')} /></Pressable>
-            <Pressable style={styles.catimage}><Image source={require('../images/cat3.jpg')} /></Pressable>
-            <Pressable style={styles.catimage}><Image source={require('../images/cat4.jpg')} /></Pressable>
-            <Pressable style={styles.catimage}><Image source={require('../images/cat5.jpg')} /></Pressable>
+            <View style={styles.container}>
+                <View>
+                    <Text>Purrlock Holmes</Text>
+                    <Pressable><Image style={styles.catimage} source={require('../images/cat9.jpg')} /></Pressable>
+                </View>
+                <View>
+                    <Text>Purrfect</Text>
+                    <Pressable><Image style={styles.catimage} source={require('../images/cat7.jpg')} /></Pressable>
+                </View>
+            </View>
+            <View style={styles.container}>
+                <View>
+                    <Text>Catolf Hitler</Text>
+                    <Pressable><Image style={styles.catimage} source={require('../images/cat8.jpeg')} /></Pressable>
+                </View>
+                <View>
+                    <Text>Meowcolm X</Text>
+                    <Pressable><Image style={styles.catimage} source={require('../images/cat8.jpeg')} /></Pressable>
+                </View>
+                
+            </View>
+            <View style={styles.container}>
+                <View>
+                    <Text>Meowcaholic</Text>
+                    <Pressable><Image style={styles.catimage} source={require('../images/cat8.jpeg')} /></Pressable>
+                </View>
+                <View>
+                    <Text>Darth Kittyous</Text>
+                    <Pressable><Image style={styles.catimage} source={require('../images/cat6.jpg')} /></Pressable>
+                </View>
+                
+            </View>
+            
         </View>
     )
 }
 
 const styles = {
     cat: {
+        flexDirection:"column",
+        //flex:1,
+        backgroundColor: "#DFFDFF",
+        height:1000,
+    },
+    container:{
+        flexDirection:"row",
+    },
+    heading:{
         textAlign:"center",
         fontSize:40,
         margin:30,
     },
     catimage:{
-        flex: 1,
-        width: 5,
-        height: 7,
+        margin:10,
+        width: 175,
+        height: 175,
         resizeMode: 'contain'
     },
 }
