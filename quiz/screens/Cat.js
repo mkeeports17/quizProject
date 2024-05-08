@@ -34,56 +34,79 @@ export default function Cath({navigation}, currentRound){
             navigation.replace('WinDead', { lives: lives, gameWon: false });
         }
     }
+    const {width, height} = useWindowDimensions();
+
+    function getHeight(picH) {
+        let SCALE = 800;
+        const ratio = picH / SCALE; // get ratio based on your standard scale 
+        const newSize = Math.round(ratio * height);
+        return newSize; 
+    } 
+    function getWidth(picW) {
+        let SCALE = 800;
+        const ratio = picW / SCALE; // get ratio based on your standard scale 
+        const newSize = Math.round(ratio * height);
+        return newSize; 
+    }
+    size = 150
+
 
     return(
 
         <View style={styles.cat}>
             
-            <View style={{backgroundColor:color}}>
+            <View style={[styles.heading,{backgroundColor:color}]}>
                 <Text style={styles.lives}>{"Question #" + round}</Text>
                 <Text style={styles.lives}>{"Lives: " + lives}</Text>
             </View>
             
-            <View style={{margin:25}}>
-                <Text style={styles.heading}>Tap on the 
-                <Pressable onPress={() => handleClick()} style={{marginTop:-3}}><Text style={styles.heading}> cutest cat!</Text></Pressable></Text>
+            
+            <View>
+                <Text style={styles.heading}>
+                    <View style={{alignContent:"center"}}>
+                    <Text style={styles.heading}>Tap on the </Text>
+                    <Pressable onPress={() => handleClick()} >
+                        <Text style={styles.heading}> cutest cat!</Text>
+                    </Pressable>
+                    </View>
+                </Text>
             </View>
             
             
-
-            <View style={styles.container}>
-                <View style={styles.group}>
-                    <Text style={styles.text}>Purrlock Holmes</Text>
-                    <Pressable onPress={()=>catClick()}><Image style={styles.catimage} source={require('../images/cat9.jpg')} /></Pressable>
+            <View >
+                <View style={styles.container}>
+                    <View style={styles.group}>
+                        <Text style={styles.text}>Purrlock Holmes</Text>
+                        <Pressable onPress={()=>catClick()}><Image style={[styles.catimage,{width:getWidth(size),height:getHeight(size)}]} source={require('../images/cat9.jpg')} /></Pressable>
+                    </View>
+                    <View style={styles.group}>
+                        <Text style={styles.text}>Purrfect</Text>
+                        <Pressable onPress={()=>catClick()}><Image style={[styles.catimage,{width:getWidth(size),height:getHeight(size)}]} source={require('../images/cat7.jpg')} /></Pressable>
+                    </View>
                 </View>
-                <View style={styles.group}>
-                    <Text style={styles.text}>Purrfect</Text>
-                    <Pressable onPress={()=>catClick()}><Image style={styles.catimage} source={require('../images/cat7.jpg')} /></Pressable>
+                <View style={styles.container}>
+                    <View style={styles.group}>
+                        <Text style={styles.text}>Catolf Hitler</Text>
+                        <Pressable onPress={()=>catClick()}><Image style={[styles.catimage,{width:getWidth(size),height:getHeight(size)}]} source={require('../images/c.jpg')} /></Pressable>
+                    </View>
+                    <View style={styles.group}>
+                        <Text style={styles.text}>Meowcolm X</Text>
+                        <Pressable onPress={()=>catClick()}><Image style={[styles.catimage,{width:getWidth(size),height:getHeight(size)}]} source={require('../images/x.jpg')} /></Pressable>
+                    </View>
+                    
+                </View>
+                <View style={styles.container}>
+                    <View style={styles.group}>
+                        <Text style={styles.text}>Meowcaholic</Text>
+                        <Pressable onPress={()=>catClick()}><Image style={[styles.catimage,{width:getWidth(size),height:getHeight(size)}]} source={require('../images/cat8.jpeg')} /></Pressable>
+                    </View>
+                    <View style={styles.group}>
+                        <Text style={styles.text}>Darth Kittyous</Text>
+                        <Pressable onPress={()=>catClick()}><Image style={[styles.catimage,{width:getWidth(size),height:getHeight(size)}]} source={require('../images/cat6.jpg')} /></Pressable>
+                    </View>
+                    
                 </View>
             </View>
-            <View style={styles.container}>
-                <View style={styles.group}>
-                    <Text style={styles.text}>Catolf Hitler</Text>
-                    <Pressable onPress={()=>catClick()}><Image style={styles.catimage} source={require('../images/c.jpg')} /></Pressable>
-                </View>
-                <View style={styles.group}>
-                    <Text style={styles.text}>Meowcolm X</Text>
-                    <Pressable onPress={()=>catClick()}><Image style={styles.catimage} source={require('../images/x.jpg')} /></Pressable>
-                </View>
-                
-            </View>
-            <View style={styles.container}>
-                <View style={styles.group}>
-                    <Text style={styles.text}>Meowcaholic</Text>
-                    <Pressable onPress={()=>catClick()}><Image style={styles.catimage} source={require('../images/cat8.jpeg')} /></Pressable>
-                </View>
-                <View style={styles.group}>
-                    <Text style={styles.text}>Darth Kittyous</Text>
-                    <Pressable onPress={()=>catClick()}><Image style={styles.catimage} source={require('../images/cat6.jpg')} /></Pressable>
-                </View>
-                
-            </View>
-            
         </View>
     )
 }
@@ -97,10 +120,10 @@ const styles = {
         fontSize:20,
     },
     cat: {
+        flex:1,
         flexDirection:"column",
-        //flex:1,
         backgroundColor: "#DFFDFF",
-        height:1000,
+        alignItems: 'center',
     },
     text:{
         textAlign:"center",
@@ -108,7 +131,6 @@ const styles = {
     },
     group:{
         
-        marginLeft:20,
         margin:10,
     },
     container:{
@@ -117,6 +139,7 @@ const styles = {
     heading:{
         textAlign:"center",
         fontSize:35,
+        width:"100%"
         
     },
     catimage:{

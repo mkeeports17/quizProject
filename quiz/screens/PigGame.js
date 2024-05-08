@@ -39,10 +39,10 @@ export default function PigGame({navigation}){
             setRoundScore(0)
         }
 
-        if (livesAmount == 0){
+        if (livesAmount <= 0){
             navigation.dispatch(
-                StackActions.replace('Trivia', {
-                    passedRound:0,lives:3
+                StackActions.replace('WinDead', {
+                    lives:livesAmount,gameWon: false
                 })
               );
         }
